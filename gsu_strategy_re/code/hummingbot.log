@@ -1,0 +1,65 @@
+# Loop through the iterations
+for i in {1..50}; do
+  echo "Sending transaction #$i"
+
+  # # GXX1/UXXX1 joinPool
+  # cast send 0xBA12222222228d8Ba445958a75a0704d566BF2C8 \
+  # "joinPool(bytes32,address,address,(address[],uint256[],bytes,bool))" \
+  # 0x00eba51a44c235bf4f0d3575d6c99d3d4236f694000000000000000000000182 0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1 0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1 \
+  # "([0x6DA08364fbEEe5A2ee8E596F3Db6170B147Cad20,0x9D6664Ad3bbEf76a2A0DF759DaDBF29D8c8D54E2], [1000000000000000000,2000000000000000000], 0x, false)" \
+  # --rpc-url https://sepolia.infura.io/v3/c2277863d49b42909d1a6b452b4d2553 \
+  # --private-key 0xf590c752425a39c334ee64d5a96941b3b33bb312ce87820349b6b2fa2a76dabe \
+  # --gas-limit 300000
+
+  # echo "Transaction #$i GXX1/UXXX1 JoinPool confirmed!"
+
+  
+  # UXXX1/GXX1 swap, kind - 0
+  cast send 0xBA12222222228d8Ba445958a75a0704d566BF2C8 \
+  "swap((bytes32,uint8,address,address,uint256,bytes),(address,bool,address,bool),uint256,uint256)" \
+  "(0x00eba51a44c235bf4f0d3575d6c99d3d4236f694000000000000000000000182,0,0x9D6664Ad3bbEf76a2A0DF759DaDBF29D8c8D54E2,0x6DA08364fbEEe5A2ee8E596F3Db6170B147Cad20,100,0x)" \
+  "(0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false,0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false)" \
+  0 $(($(date +%s) + 300))  \
+  --rpc-url https://sepolia.infura.io/v3/c2277863d49b42909d1a6b452b4d2553 \
+  --private-key 0xf590c752425a39c334ee64d5a96941b3b33bb312ce87820349b6b2fa2a76dabe
+
+  echo "Transaction #$i UXXX1/GXX1 KIND 0 confirmed!"
+
+
+  # GXX1/UXXX1 swap, kind - 0
+  cast send 0xBA12222222228d8Ba445958a75a0704d566BF2C8 \
+  "swap((bytes32,uint8,address,address,uint256,bytes),(address,bool,address,bool),uint256,uint256)" \
+  "(0x00eba51a44c235bf4f0d3575d6c99d3d4236f694000000000000000000000182,0,0x6DA08364fbEEe5A2ee8E596F3Db6170B147Cad20,0x9D6664Ad3bbEf76a2A0DF759DaDBF29D8c8D54E2,1000,0x)" \
+  "(0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false,0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false)" \
+  0 $(($(date +%s) + 300))  \
+  --rpc-url https://sepolia.infura.io/v3/c2277863d49b42909d1a6b452b4d2553 \
+  --private-key 0xf590c752425a39c334ee64d5a96941b3b33bb312ce87820349b6b2fa2a76dabe
+
+  echo "Transaction #$i GXX1/UXXX1 KIND 0 confirmed!"
+
+
+  # # UXXX1/GXX1 swap, kind - 1
+  # cast send 0xBA12222222228d8Ba445958a75a0704d566BF2C8 \
+  # "swap((bytes32,uint8,address,address,uint256,bytes),(address,bool,address,bool),uint256,uint256)" \
+  # "(0x00eba51a44c235bf4f0d3575d6c99d3d4236f694000000000000000000000182,1,0x9D6664Ad3bbEf76a2A0DF759DaDBF29D8c8D54E2,0x6DA08364fbEEe5A2ee8E596F3Db6170B147Cad20,1,0x)" \
+  # "(0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false,0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false)" \
+  # 0 $(($(date +%s) + 300))  \
+  # --rpc-url https://sepolia.infura.io/v3/c2277863d49b42909d1a6b452b4d2553 \
+  # --private-key 0xf590c752425a39c334ee64d5a96941b3b33bb312ce87820349b6b2fa2a76dabe
+
+  # echo "Transaction #$i UXXX1/GXX1 KIND 1 confirmed!"
+
+
+  # # GXX1/UXXX1 swap, kind - 1
+  # cast send 0xBA12222222228d8Ba445958a75a0704d566BF2C8 \
+  # "swap((bytes32,uint8,address,address,uint256,bytes),(address,bool,address,bool),uint256,uint256)" \
+  # "(0x00eba51a44c235bf4f0d3575d6c99d3d4236f694000000000000000000000182,1,0x6DA08364fbEEe5A2ee8E596F3Db6170B147Cad20,0x9D6664Ad3bbEf76a2A0DF759DaDBF29D8c8D54E2,10000000,0x)" \
+  # "(0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false,0xB859d90A273BcFF2BC682FBB197065C0762F0Bf1,false)" \
+  # 0 $(($(date +%s) + 300))  \
+  # --rpc-url https://sepolia.infura.io/v3/c2277863d49b42909d1a6b452b4d2553 \
+  # --private-key 0xf590c752425a39c334ee64d5a96941b3b33bb312ce87820349b6b2fa2a76dabe
+
+  echo "Transaction #$i GXX1/UXXX1 KIND 1 confirmed!"
+
+done
+

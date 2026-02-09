@@ -1,0 +1,17 @@
+{
+  "name": "test-gateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@balancer/sdk": "^1.0.2",
+    "ethers": "5",
+    "viem": "^2.21.55",
+    "web3": "^4.16.0"
+  }
+}
